@@ -103,3 +103,13 @@
 /* Narrow legal pages reuse the doc body styles without the index. */
 .wrap-narrow.doc-body h2 { margin-top: var(--s-7); }
 .wrap-narrow.doc-body h2:first-of-type { margin-top: 0; }
+
+/* ---------- product screenshots ---------- */
+.shot { margin: var(--s-6) 0; max-width: 60rem; }
+.shot picture, .shot img { display: block; width: 100%; height: auto; border: 1px solid var(--rule-ink); border-radius: var(--radius); background: #fff; }
+.paper .shot picture, .paper .shot img { border-color: var(--rule-pap); }
+.shot figcaption { margin-top: var(--s-3); font-size: var(--step--1); color: var(--text-2); max-width: var(--measure); }
+.paper .shot figcaption { color: var(--text-ink-2); }
+.shot-phone { max-width: 22rem; }
+.shot-row { display: grid; gap: var(--s-6); align-items: start; }
+@media (min-width: 60em) { .shot-row { grid-template-columns: 1fr 22rem; } }
