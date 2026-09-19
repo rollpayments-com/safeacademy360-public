@@ -301,7 +301,10 @@ async function build() {
     return false;
   };
   for (const p of pages) {
-    const refs = [...p.html.matchAll(/\b(?:href|src|content|data-src)="(\/[^"]*)"/g)].map((m) => m[1]);
+    const refs = [
+      ...[...p.html.matchAll(/\b(?:href|src|content|data-src)="(\/[^"]*)"/g)].map((m) => m[1]),
+      ...[...p.html.matchAll(/\bsrcset="([^"]+)"/g)].flatMap((m) => m[1].split(",").map((c) => c.trim().split(/\s+/)[0]).filter((u) => u.startsWith("/"))),
+    ];
     for (const r of new Set(refs)) {
       if (r.startsWith("//")) continue;
       if (!(await distFile(r))) warnings.push(`${p.route} links to missing ${r}`);
