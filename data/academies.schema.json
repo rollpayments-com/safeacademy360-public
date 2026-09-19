@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://safeacademy360.com/data/academies.schema.json",
+  "title": "Safe Academy 360 certified academies",
+  "description": "Public directory and verify data. Academy level only. Never include a coach's name, any individual's screening outcome, or any contact person.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["certificate", "name", "city", "state", "certified", "renewalDue", "status"],
+    "properties": {
+      "certificate": { "type": "string", "pattern": "^SAI-[0-9]{4}-[0-9]{5}$", "description": "Academy certificate number as printed on the placard, e.g. SAI-2026-00001" },
+      "name": { "type": "string", "minLength": 2, "maxLength": 120 },
+      "city": { "type": "string" },
+      "state": { "type": "string", "pattern": "^[A-Z]{2}$", "description": "Two letter US state or territory code" },
+      "certified": { "type": "string", "format": "date", "description": "Date the academy was first certified, YYYY-MM-DD" },
+      "renewalDue": { "type": "string", "format": "date", "description": "Date the current certification lapses if not renewed, YYYY-MM-DD" },
+      "status": { "type": "string", "enum": ["current", "lapsed"], "description": "current: certification is in effect. lapsed: a renewal date passed and the academy has not yet renewed. Neutral, never punitive." },
+      "website": { "type": "string", "format": "uri" },
+      "fixture": { "type": "boolean", "description": "true marks a fictional row used only in development. The build drops fixture rows unless run with --fixtures." }
+    }
+  }
+}

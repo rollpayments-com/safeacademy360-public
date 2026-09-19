@@ -1,0 +1,24 @@
+[
+  {
+    "certificate": "SAI-2026-00001",
+    "name": "Fictional Academy One (sample row)",
+    "city": "Sampleville",
+    "state": "CA",
+    "certified": "2026-01-15",
+    "renewalDue": "2027-01-15",
+    "status": "current",
+    "website": "https://example.com/",
+    "fixture": true
+  },
+  {
+    "certificate": "SAI-2025-00002",
+    "name": "Fictional Academy Two (sample row, lapsed)",
+    "city": "Testburg",
+    "state": "TX",
+    "certified": "2025-03-01",
+    "renewalDue": "2026-03-01",
+    "status": "lapsed",
+    "website": "https://example.org/",
+    "fixture": true
+  }
+]

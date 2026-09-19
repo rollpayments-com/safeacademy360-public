@@ -1,0 +1,35 @@
+<!--
+title: Verify a Safe Academy 360 certificate
+description: Enter the certificate number from a martial arts academy's placard to confirm its Safe Academy 360 certification is current.
+crumb: Verify
+layout: ink
+scripts: <script type="module" src="/assets/js/verify.js"></script>
+-->
+<div class="wrap page-head">
+  <h1><span class="square-mark square-mark-sm" aria-hidden="true"></span><span>Verify a certificate</span></h1>
+  <p class="lede">Enter the certificate number from an academy's placard to confirm it is current.</p>
+</div>
+<div class="wrap section-tight">
+  <form class="verify-form" id="verify-form" novalidate>
+    <div class="field">
+      <label for="certificate">Certificate number</label>
+      <div class="field-inline">
+        <input id="certificate" name="c" type="text" inputmode="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="SAI-2026-00001" aria-describedby="certificate-hint">
+        <button class="btn btn-primary" type="submit">Check</button>
+      </div>
+      <p class="hint" id="certificate-hint">Printed on the academy's placard and certificate. Spaces and hyphens do not matter.</p>
+    </div>
+  </form>
+  <div class="verify-result" id="verify-result" tabindex="-1" aria-live="polite" aria-atomic="true"></div>
+  <noscript><p>Checking a certificate needs JavaScript. You can also search the <a href="/directory/">directory</a> or email <a href="mailto:support@rollpay.co">support@rollpay.co</a>.</p></noscript>
+</div>
+<hr class="hairline">
+<div class="wrap section-tight">
+  <div class="ledger">
+    <h2>What a current result means</h2>
+    <div>
+      <p>The academy has met the Safe Academy 360 requirements as of the certified date shown: each coach was screened against public records and completed SafeSport, mandated reporter, and CPR and first aid training with certificates on file, the academy adopted a written code of conduct, and new registrations are checked against public records and sex offender registries.</p>
+      <p>It says nothing about any individual, and it is not a guarantee of anyone's safety. Registry and public records data is incomplete, and no screening catches everyone. <a href="/parents/">Questions any parent should still ask</a>.</p>
+    </div>
+  </div>
+</div>

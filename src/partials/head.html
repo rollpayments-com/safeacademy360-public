@@ -1,0 +1,29 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{title}}</title>
+<meta name="description" content="{{description}}">
+<link rel="canonical" href="{{canonical}}">
+{{#if noindex}}<meta name="robots" content="noindex, nofollow">{{else}}<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">{{/if}}
+{{#if verification}}<meta name="google-site-verification" content="{{verification}}">{{/if}}
+<meta name="theme-color" content="#0A0A0B">
+<meta property="og:site_name" content="Safe Academy 360">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:url" content="{{canonical}}">
+{{#if ogImage}}<meta property="og:image" content="{{ogImage}}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Safe Academy 360 emblem beside the page title on a black field">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{{ogImage}}">{{else}}<meta name="twitter:card" content="summary">{{/if}}
+<meta name="twitter:title" content="{{title}}">
+<meta name="twitter:description" content="{{description}}">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/BarlowCondensed-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/SourceSerif4-var.woff2" as="font" type="font/woff2" crossorigin>
+<style>{{{criticalCss}}}</style>
+{{{jsonld}}}
+<!-- Analytics slot. Nothing is loaded at launch. Anything added here must be reflected in /privacy/ before it ships. -->

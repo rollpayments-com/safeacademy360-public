@@ -1,0 +1,105 @@
+/* ---------- home ---------- */
+.hero { color: #fff; }
+.hero .wrap { display: grid; gap: var(--s-7); padding-block: var(--s-7) var(--s-8); align-items: center; }
+@media (min-width: 60em) { .hero .wrap { grid-template-columns: 7fr 5fr; padding-block: var(--s-8) var(--s-9); } }
+.hero-copy { order: 2; }
+.hero-emblem { order: 1; justify-self: center; width: min(64vw, 18rem); }
+@media (min-width: 60em) { .hero-copy { order: 1; } .hero-emblem { order: 2; width: min(100%, 30rem); justify-self: end; } }
+.hero h1 { margin-bottom: var(--s-5); max-width: 14ch; }
+.hero .lede { font-weight: 400; color: var(--text); max-width: 52ch; margin-bottom: var(--s-6); font-size: var(--step-1); }
+.hero-logo { width: 100%; height: auto; color: #fff; }
+.hero-logo .accent { fill: var(--brand); }
+@keyframes draw-check { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+.hero-logo .accent { animation: draw-check 480ms cubic-bezier(0.2, 0.7, 0.2, 1) 350ms both; }
+@media (prefers-reduced-motion: reduce) { .hero-logo .accent { animation: none; clip-path: none; } }
+.hero-by { margin: var(--s-3) 0 0; text-align: right; font-family: var(--font-display); font-weight: 600; font-size: var(--step--1); color: var(--text-2); }
+
+.statement p { font-size: var(--step-2); line-height: 1.45; max-width: 34em; }
+.statement .lede-first::first-letter { font-weight: 600; }
+
+.not-list { margin-top: var(--s-5); }
+
+/* ---------- 404 ---------- */
+.notfound { padding-block: var(--s-9); }
+
+/* ---------- document pages (paper) ---------- */
+.paper .page-head { border-bottom: 1px solid var(--rule-pap); }
+.doc-index h2 { font-size: var(--step-0); font-weight: 600; color: var(--text-ink-2); margin-bottom: var(--s-3); }
+.doc-index ol { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-2); font-family: var(--font-display); font-weight: 600; font-size: var(--step-0); }
+.doc-index ol ol { padding-left: var(--s-4); margin-top: var(--s-2); font-weight: 400; font-family: var(--font-body); font-size: var(--step--1); }
+.doc-index a { text-decoration: none; color: var(--text-ink-2); }
+.doc-index a:hover, .doc-index a:focus-visible { color: var(--text-ink); text-decoration: underline; }
+.doc-body h2 { font-size: var(--step-4); margin-bottom: var(--s-5); }
+.doc-body h3 { margin-top: var(--s-6); font-size: var(--step-2); }
+.doc-body h3:first-of-type { margin-top: 0; }
+.doc-body p, .doc-body ul, .doc-body ol { font-size: var(--step-0); }
+.doc-body .notdo { border-left: 3px solid var(--text-ink); padding-left: var(--s-5); }
+.ink .doc-body .notdo { border-left-color: var(--text); }
+.doc-body table { border-collapse: collapse; width: 100%; max-width: var(--measure); margin: 0 0 var(--s-5); font-size: var(--step--1); }
+.doc-body th, .doc-body td { text-align: left; vertical-align: top; padding: var(--s-3) var(--s-4) var(--s-3) 0; border-bottom: 1px solid var(--rule-pap); }
+.ink .doc-body th, .ink .doc-body td { border-color: var(--rule-ink); }
+.doc-body th { font-family: var(--font-display); font-weight: 600; font-size: var(--step-0); }
+.doc-body thead th { color: var(--text-ink-2); font-size: var(--step--1); }
+.ink .doc-body thead th { color: var(--text-2); }
+
+/* Ink document pages reuse the same grid. */
+.ink .doc-index h2 { color: var(--text-2); }
+.ink .doc-index a { color: var(--text-2); }
+.ink .doc-index a:hover, .ink .doc-index a:focus-visible { color: var(--text); }
+.ink .doc-body > section + section { border-top-color: var(--rule-ink); }
+
+/* ---------- certification steps ---------- */
+.steps { list-style: none; counter-reset: step; margin: 0; padding: 0; display: grid; gap: var(--s-7); }
+.steps > li { counter-increment: step; display: grid; grid-template-columns: 3.5rem 1fr; gap: var(--s-5); }
+.steps > li::before { content: counter(step); font-family: var(--font-display); font-weight: 700; font-size: var(--step-5); line-height: 0.9; color: var(--text-2); border-top: 3px solid var(--brand); padding-top: var(--s-3); }
+.steps h3 { margin: 0 0 var(--s-3); font-size: var(--step-3); font-weight: 700; }
+.steps dl { display: grid; grid-template-columns: max-content 1fr; gap: var(--s-2) var(--s-5); margin: var(--s-4) 0 0; font-size: var(--step--1); }
+.steps dt { font-family: var(--font-display); font-weight: 600; color: var(--text-2); }
+.steps dd { margin: 0; }
+
+/* ---------- pricing calculator ---------- */
+.calc { background: var(--ink-raise); border: 1px solid var(--rule-ink); padding: var(--s-6); max-width: 34rem; }
+.calc label { display: block; font-family: var(--font-display); font-weight: 600; font-size: var(--step-1); margin-bottom: var(--s-3); }
+.stepper { display: inline-grid; grid-template-columns: 3rem 6rem 3rem; border: 1px solid rgba(255, 255, 255, 0.3); border-radius: var(--radius); }
+.stepper button { background: none; border: 0; color: var(--text); font-family: var(--font-display); font-weight: 700; font-size: var(--step-2); cursor: pointer; }
+.stepper button:hover { background: rgba(255, 255, 255, 0.06); }
+.stepper input { width: 100%; background: var(--ink); color: var(--text); border: 0; border-inline: 1px solid rgba(255, 255, 255, 0.3); text-align: center; font-family: var(--font-display); font-weight: 700; font-size: var(--step-3); padding: var(--s-2); -moz-appearance: textfield; }
+.stepper input::-webkit-outer-spin-button, .stepper input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.stepper input:focus-visible { outline-offset: -3px; }
+.calc-lines { width: 100%; border-collapse: collapse; margin-top: var(--s-5); font-family: var(--font-display); font-weight: 600; font-size: var(--step-1); }
+.calc-lines th { text-align: left; font-weight: 600; color: var(--text-2); }
+.calc-lines td { text-align: right; font-variant-numeric: tabular-nums; }
+.calc-lines th, .calc-lines td { padding: var(--s-3) 0; border-bottom: 1px solid var(--rule-ink); }
+.calc-lines .total th, .calc-lines .total td { font-size: var(--step-3); font-weight: 700; color: var(--text); border-bottom: 0; padding-top: var(--s-4); }
+.calc-note { margin-top: var(--s-4); color: var(--text-2); font-size: var(--step--1); }
+.price-hero { font-family: var(--font-display); font-weight: 700; font-size: var(--step-5); line-height: 1; margin: 0 0 var(--s-3); }
+.price-hero small { font-size: var(--step-1); font-weight: 600; color: var(--text-2); }
+.two-col { display: grid; gap: var(--s-7); align-items: start; }
+@media (min-width: 60em) { .two-col { grid-template-columns: 1fr 1fr; } }
+
+/* ---------- parents: questions ---------- */
+.qa { list-style: none; counter-reset: q; margin: 0; padding: 0; display: grid; gap: var(--s-7); }
+.qa > li { counter-increment: q; }
+.qa h3 { font-size: var(--step-3); font-weight: 700; margin-bottom: var(--s-4); }
+.qa h3::before { content: counter(q) ". "; color: var(--text-ink-2); }
+.qa .answers { display: grid; gap: var(--s-4); }
+@media (min-width: 52em) { .qa .answers { grid-template-columns: 1fr 1fr; } }
+.qa .answers > div { padding: var(--s-4) var(--s-5); border: 1px solid var(--rule-pap); background: var(--paper-raise); }
+.qa .answers h4 { font-size: var(--step-0); margin-bottom: var(--s-2); display: flex; align-items: center; gap: var(--s-2); }
+.qa .answers .check { width: 0.95em; height: 0.75em; }
+.qa .answers p { font-size: var(--step--1); margin: 0; }
+.qa .answers .pause h4::before { content: ""; width: 0.7em; height: 0.7em; border: 2px solid var(--text-ink); transform: rotate(45deg); margin-right: 0.15em; }
+
+/* ---------- resources ---------- */
+.resources { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-4); }
+@media (min-width: 52em) { .resources { grid-template-columns: 1fr 1fr; } }
+.resource { border: 1px solid var(--rule-ink); padding: var(--s-5) var(--s-6); display: grid; gap: var(--s-3); align-content: start; }
+.resource h2 { font-size: var(--step-2); margin: 0; }
+.resource p { margin: 0; font-size: var(--step--1); }
+.resource-status { font-family: var(--font-display); font-weight: 600; color: var(--text-2); }
+.resource.is-pending { color: var(--text-2); border-style: dashed; }
+.resource.is-pending h2 { color: var(--text); }
+
+/* Narrow legal pages reuse the doc body styles without the index. */
+.wrap-narrow.doc-body h2 { margin-top: var(--s-7); }
+.wrap-narrow.doc-body h2:first-of-type { margin-top: 0; }

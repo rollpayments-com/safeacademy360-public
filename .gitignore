@@ -1,0 +1,10 @@
+# Product repo is cloned read only as a sibling, never inside this repo
+../roll-payments-src/
+roll-payments-src/
+node_modules/
+dist/
+.DS_Store
+.env
+.env.*
+*.log
+.og-tmp/

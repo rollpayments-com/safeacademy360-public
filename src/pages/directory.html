@@ -1,0 +1,48 @@
+<!--
+title: Certified martial arts academies directory | Safe Academy 360
+description: Martial arts academies certified by Safe Academy 360, with certificate numbers, certified dates, and renewal dates. Search by state or name.
+crumb: Directory
+layout: ink
+scripts: <script type="module" src="/assets/js/directory.js"></script>
+-->
+<div class="wrap page-head">
+  <h1><span class="square-mark square-mark-sm" aria-hidden="true"></span><span>Certified academies</span></h1>
+  <p class="lede">Academies that have completed the program, with the certificate number printed on their placard. Every entry can be checked on <a href="/verify/">verify</a>.</p>
+</div>
+<div class="wrap section-tight" id="directory">
+  <div class="dir-controls" role="search" aria-label="Filter the directory">
+    <div class="field">
+      <label for="q">Search</label>
+      <input id="q" type="search" placeholder="Academy name, city, or certificate number" autocomplete="off">
+    </div>
+    <div class="field">
+      <label for="state">State</label>
+      <select id="state"><option value="">All states</option></select>
+    </div>
+  </div>
+  <p class="dir-status" id="directory-status" aria-live="polite"></p>
+  <div class="dir-empty" id="directory-empty">
+    <span class="shield-device" aria-hidden="true"><svg class="shield-device-shape"><use href="#sa-shield"/></svg></span>
+    <div>
+      <p>The first certified academies will be listed here as they complete the program. If your academy has certified and is not listed, <a href="mailto:support@rollpay.co?subject=Directory%20listing">tell us</a>.</p>
+    </div>
+  </div>
+  <p id="directory-nomatch" hidden>No academies match that search. Clear the filters to see every listing.</p>
+  <table class="dir-table" id="directory-table" hidden>
+    <thead>
+      <tr><th scope="col">Academy</th><th scope="col">Location</th><th scope="col">Status</th><th scope="col">Certified</th><th scope="col">Renewal due</th><th scope="col">Certificate</th></tr>
+    </thead>
+    <tbody id="directory-body"></tbody>
+  </table>
+  <noscript><p>The directory needs JavaScript to filter. The raw list is at <a href="/data/academies.json">/data/academies.json</a>.</p></noscript>
+</div>
+<hr class="hairline">
+<div class="wrap section-tight">
+  <div class="ledger">
+    <h2>What a listing means</h2>
+    <div>
+      <p>A listed academy has met the Safe Academy 360 requirements as of its certified date, and the listing shows when renewal is due. Lapsed means a renewal date passed and the academy has not yet renewed. It is a neutral state.</p>
+      <p>A listing says nothing about any individual and is not a guarantee of anyone's safety. <a href="/parents/#listing">What a listing does and does not tell you</a>.</p>
+    </div>
+  </div>
+</div>

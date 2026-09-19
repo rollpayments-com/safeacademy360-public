@@ -1,0 +1,117 @@
+<!--
+title: Enroll your martial arts academy | Safe Academy 360
+description: Start Safe Academy 360 enrollment. Tell us about the academy and how many coaches to certify; the price estimate updates as you type.
+crumb: Enroll
+layout: ink
+hideCta: true
+scripts: <script type="module" src="/assets/js/form.js"></script>
+-->
+<div class="wrap page-head">
+  <h1><span class="square-mark square-mark-sm" aria-hidden="true"></span><span>Enroll your academy</span></h1>
+  <p class="lede">Tell us about the academy. It takes a few minutes, and the price estimate updates as you type.</p>
+</div>
+<div class="wrap section-tight">
+  <!-- Web3Forms public access key (safe in client side code). Submissions are emailed to the address the key was created under. -->
+  <form id="enroll-form" data-endpoint="https://api.web3forms.com/submit" data-access-key="b499989a-bf82-4b9e-93fd-f05c98c996be" method="post" novalidate>
+    <div class="field">
+      <label for="academy">Academy name</label>
+      <input id="academy" name="academy" type="text" autocomplete="organization" required aria-describedby="academy-error">
+      <p class="error" id="academy-error" aria-live="polite"></p>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label for="contact">Your name</label>
+        <input id="contact" name="contact" type="text" autocomplete="name" required aria-describedby="contact-error">
+        <p class="error" id="contact-error" aria-live="polite"></p>
+      </div>
+      <div class="field">
+        <label for="role">Your role</label>
+        <select id="role" name="role" required aria-describedby="role-error">
+          <option value="">Choose one</option>
+          <option>Owner</option>
+          <option>Head coach</option>
+          <option>Manager</option>
+          <option>Affiliation leader</option>
+          <option>Other</option>
+        </select>
+        <p class="error" id="role-error" aria-live="polite"></p>
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" required aria-describedby="email-error">
+        <p class="error" id="email-error" aria-live="polite"></p>
+      </div>
+      <div class="field">
+        <label for="phone">Phone</label>
+        <input id="phone" name="phone" type="tel" autocomplete="tel" required aria-describedby="phone-error">
+        <p class="error" id="phone-error" aria-live="polite"></p>
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label for="city">City</label>
+        <input id="city" name="city" type="text" autocomplete="address-level2" required aria-describedby="city-error">
+        <p class="error" id="city-error" aria-live="polite"></p>
+      </div>
+      <div class="field">
+        <label for="state">State</label>
+        <select id="state" name="state" required aria-describedby="state-error">
+          <option value="">Choose one</option>
+          <option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option><option>CO</option><option>CT</option><option>DE</option><option>DC</option><option>FL</option><option>GA</option><option>HI</option><option>ID</option><option>IL</option><option>IN</option><option>IA</option><option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option><option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option><option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option><option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option><option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option><option>SD</option><option>TN</option><option>TX</option><option>UT</option><option>VT</option><option>VA</option><option>WA</option><option>WV</option><option>WI</option><option>WY</option><option>PR</option>
+        </select>
+        <p class="error" id="state-error" aria-live="polite"></p>
+      </div>
+    </div>
+    <div class="field">
+      <label for="website">Website <span class="muted">(optional)</span></label>
+      <input id="website" name="website" type="text" inputmode="url" autocomplete="url" aria-describedby="website-error">
+      <p class="error" id="website-error" aria-live="polite"></p>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label for="coaches">Coaches to certify</label>
+        <input id="coaches" name="coaches" type="number" inputmode="numeric" min="1" max="500" step="1" value="1" required aria-describedby="coaches-hint coaches-error">
+        <p class="hint" id="coaches-hint">Everyone who teaches, including assistants and kids program leads.</p>
+        <p class="error" id="coaches-error" aria-live="polite"></p>
+      </div>
+      <div class="field">
+        <label for="minors">Students who are minors</label>
+        <input id="minors" name="minors" type="number" inputmode="numeric" min="0" step="1" value="0" required aria-describedby="minors-hint minors-error">
+        <p class="hint" id="minors-hint">Roughly. It helps us understand the academy.</p>
+        <p class="error" id="minors-error" aria-live="polite"></p>
+      </div>
+    </div>
+    <div class="field">
+      <label for="affiliation">Affiliation <span class="muted">(optional)</span></label>
+      <input id="affiliation" name="affiliation" type="text" autocomplete="off">
+    </div>
+    <div class="field">
+      <label for="message">Anything else <span class="muted">(optional)</span></label>
+      <textarea id="message" name="message"></textarea>
+    </div>
+    <p class="estimate" aria-live="polite"><span data-estimate></span></p>
+    <div class="field-check">
+      <input id="consent" name="consent" type="checkbox" value="yes" aria-describedby="consent-error">
+      <label for="consent">Roll Payments may contact me by email or phone about enrolling this academy in Safe Academy 360. Nothing else, and no marketing list. See the <a href="/privacy/">privacy policy</a>.</label>
+    </div>
+    <p class="error" id="consent-error" aria-live="polite"></p>
+    <div class="honey" aria-hidden="true">
+      <label for="company_website">Leave this field empty</label>
+      <input id="company_website" name="company_website" type="text" tabindex="-1" autocomplete="off">
+    </div>
+    <div class="actions">
+      <button class="btn btn-primary btn-lg" type="submit">Send enrollment request</button>
+      <a class="link-plain" href="/pricing/">Pricing in full</a>
+    </div>
+    <p class="form-status" id="form-status" aria-live="polite"></p>
+  </form>
+  <noscript><p>This form needs JavaScript. You can email the same details to <a href="mailto:support@rollpay.co?subject=Enroll">support@rollpay.co</a>.</p></noscript>
+  <div class="form-success" id="form-success" hidden tabindex="-1">
+    <span class="shield-device is-current" aria-hidden="true"><svg class="shield-device-shape"><use href="#sa-shield-solid"/></svg><svg class="shield-device-check"><use href="#sa-check"/></svg></span>
+    <h2>Request received</h2>
+    <p>Thank you. We have your enrollment request for <strong data-academy></strong> and will reply to <strong data-email></strong>.</p>
+    <p>What happens next: we confirm the academy details and the coach list with you, each coach is screened and then completes the trainings, and the academy adopts the code of conduct. <a href="/how-it-works/">How it works</a> has the full picture.</p>
+  </div>
+</div>

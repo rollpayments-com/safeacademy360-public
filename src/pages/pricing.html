@@ -1,0 +1,76 @@
+<!--
+title: Pricing: $25 per academy, $5 per coach | Safe Academy 360
+description: Safe Academy 360 costs $25 per month per academy plus $5 per month per certified coach. No setup fee. Use the calculator to see your monthly total.
+crumb: Pricing
+layout: ink
+scripts: <script type="module" src="/assets/js/pricing.js"></script>
+jsonld: <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Safe Academy 360 certification and registration screening","serviceType":"Safety certification and screening program for martial arts academies","provider":{"@type":"Organization","name":"Roll Payments LLC","url":"https://rollpayments.com"},"areaServed":"US","url":"https://safeacademy360.com/pricing/","offers":[{"@type":"Offer","name":"Academy","price":"25.00","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"25.00","priceCurrency":"USD","unitText":"per academy per month"}},{"@type":"Offer","name":"Certified coach","price":"5.00","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"5.00","priceCurrency":"USD","unitText":"per certified coach per month"}}]}</script>
+-->
+<div class="wrap page-head">
+  <h1><span class="square-mark square-mark-sm" aria-hidden="true"></span><span>Pricing</span></h1>
+  <p class="lede">$25 per month per academy, plus $5 per month for each certified coach. No setup fee.</p>
+</div>
+<div class="wrap section-tight">
+  <div class="two-col">
+    <div>
+      <p class="price-hero">$25 <small>per month per academy</small></p>
+      <p class="price-hero">$5 <small>per month per certified coach</small></p>
+      <p>The academy price covers the academy's certification, its listing, and its record. The coach price is per coach whose credential is tracked, whether they are a head coach, an assistant, or a kids program lead.</p>
+      <p>The price is the same for every academy. There is no setup fee, no tier, and no discount that expires.</p>
+    </div>
+    <form class="calc" id="calc" aria-labelledby="calc-heading" novalidate>
+      <h2 id="calc-heading" class="visually-hidden">Calculator</h2>
+      <label for="coaches">Coaches to certify</label>
+      <div class="stepper">
+        <button type="button" data-step="-1" aria-label="One fewer coach">&minus;</button>
+        <input id="coaches" name="coaches" type="number" inputmode="numeric" min="0" max="500" step="1" value="4" aria-describedby="calc-note">
+        <button type="button" data-step="1" aria-label="One more coach">+</button>
+      </div>
+      <table class="calc-lines">
+        <tbody>
+          <tr><th scope="row">Academy</th><td>$25</td></tr>
+          <tr><th scope="row" data-coaches-label>4 coaches × $5</th><td data-coaches-cost>$20</td></tr>
+          <tr class="total"><th scope="row">Per month</th><td data-total>$45</td></tr>
+        </tbody>
+      </table>
+      <p class="calc-note" id="calc-note">That is <span data-yearly>$540</span> a year. No email address needed; nothing is sent anywhere.</p>
+      <p class="visually-hidden" data-live aria-live="polite"></p>
+      <button class="visually-hidden" type="submit">Recalculate</button>
+    </form>
+  </div>
+</div>
+<hr class="hairline">
+<div class="wrap doc">
+  <nav class="doc-index" aria-labelledby="index-heading">
+    <h2 id="index-heading">On this page</h2>
+    <ol>
+      <li><a href="#included">What the price covers</a></li>
+      <li><a href="#not-included">What it does not cover</a></li>
+      <li><a href="#billing">Billing and cancellation</a></li>
+    </ol>
+  </nav>
+  <div class="doc-body">
+    <section id="included" aria-labelledby="included-h">
+      <h2 id="included-h">What the price covers</h2>
+      <ul class="check-list">
+        <li><svg class="check" aria-hidden="true"><use href="#sa-check"/></svg><span>The records screen for each coach, before anything else</span></li>
+        <li><svg class="check" aria-hidden="true"><use href="#sa-check"/></svg><span>Certificate upload, review, and per credential expiry tracking for each coach</span></li>
+        <li><svg class="check" aria-hidden="true"><use href="#sa-check"/></svg><span>The academy's certificate number, its directory listing, and certificate lookup on verify</span></li>
+        <li><svg class="check" aria-hidden="true"><use href="#sa-check"/></svg><span>Certificate and placard artwork for the academy</span></li>
+        <li><svg class="check" aria-hidden="true"><use href="#sa-check"/></svg><span>The record: who was screened, what was completed, and when it expires</span></li>
+      </ul>
+      <p>Terms for registration screening volume are being finalized and will be stated here plainly before enrollment opens.</p>
+      <!-- TODO(owner): is member screening included in the $25 at any volume, or metered above a threshold? Vendor list price is $0.15 per call, $0.11 above 2,000 per month. Decide before this page states anything. -->
+    </section>
+    <section id="not-included" aria-labelledby="not-included-h">
+      <h2 id="not-included-h">What it does not cover</h2>
+      <p>The trainings themselves. SafeSport, mandated reporter, and CPR and first aid courses are completed with their providers, and any course fee is set by the provider.</p>
+      <!-- TODO(owner): does the $5 per coach include the cost of the third party course, or does the coach pay the provider directly? -->
+    </section>
+    <section id="billing" aria-labelledby="billing-h">
+      <h2 id="billing-h">Billing and cancellation</h2>
+      <p>Billed monthly. Contract length, cancellation terms, an annual option, and multi location pricing will be published here before enrollment opens.</p>
+      <!-- TODO(owner): contract length and cancellation terms; annual option; multi location pricing; whether Roll Payments clients pay the same; whether enrollment is open to non Roll Payments academies and how they pay. -->
+    </section>
+  </div>
+</div>

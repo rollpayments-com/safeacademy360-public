@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{{> head}}
+</head>
+<body class="{{layout}}">
+<a class="skip-link" href="#main">Skip to content</a>
+{{> emblem}}
+{{> masthead}}
+<main id="main" tabindex="-1">
+{{{content}}}
+</main>
+{{#if hideCta}}{{else}}{{> cta}}{{/if}}
+{{> footer}}
+<script type="module" src="/assets/js/nav.js"></script>
+{{{scripts}}}
+</body>
+</html>

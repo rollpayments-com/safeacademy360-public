@@ -1,0 +1,55 @@
+/* Safe Academy 360 design tokens. The emblem is white and red on black; everything follows from it. */
+:root {
+  /* surfaces */
+  --ink: #0A0A0B;         /* page base, masthead, footer */
+  --ink-true: #000000;    /* the field the emblem sits on */
+  --ink-raise: #141417;   /* tables, elevated surfaces, placard backs */
+  --rule-ink: rgba(255, 255, 255, 0.10);
+  --paper: #F2F3F5;       /* document pages only, cool not cream */
+  --paper-raise: #FFFFFF;
+  --rule-pap: #D7DAE0;
+
+  /* meaning */
+  --brand: #DC2626;       /* the check, primary action, active states. Matches the product app. */
+  --brand-deep: #B91C1C;  /* hover and pressed */
+  --verified: #0E7C55;    /* verify current state only, never decorative */
+
+  /* text on ink */
+  --text: #E8E8EA;
+  --text-2: #A1A1A6;
+  /* text on paper */
+  --text-ink: #141417;
+  --text-ink-2: #4A4A52;
+
+  /* type */
+  --font-display: "Barlow Condensed", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --step--1: 0.9375rem;
+  --step-0: 1.0625rem;
+  --step-1: 1.25rem;
+  --step-2: 1.5rem;
+  --step-3: 1.875rem;
+  --step-4: 2.375rem;
+  --step-5: 3rem;
+  --step-6: clamp(2.75rem, 6vw, 4.5rem);
+  --leading-body: 1.6;
+  --leading-tight: 1.05;
+  --measure: 68ch;
+
+  /* space */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 3rem;
+  --s-8: 4rem;
+  --s-9: 6rem;
+
+  /* shape */
+  --radius: 2px;
+  --wrap: 74rem;
+  --gutter: clamp(16px, 4vw, 40px);
+  --tape: 6px;
+}

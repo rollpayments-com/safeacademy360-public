@@ -1,0 +1,42 @@
+.wrap { width: min(100% - 2 * var(--gutter), var(--wrap)); margin-inline: auto; }
+.wrap-narrow { width: min(100% - 2 * var(--gutter), 52rem); margin-inline: auto; }
+.section { padding-block: var(--s-8); }
+@media (min-width: 60em) { .section { padding-block: var(--s-9); } }
+.section-tight { padding-block: var(--s-7); }
+
+/* The two rules between sections: a hairline, and the mat edge tape. */
+.hairline { border: 0; border-top: 1px solid var(--rule-ink); margin: 0; }
+.paper .hairline { border-color: var(--rule-pap); }
+.tape {
+  height: var(--tape);
+  margin: 0;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+  background-color: var(--ink-raise);
+  background-image: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 4px);
+}
+.paper .tape { border-top-color: rgba(0, 0, 0, 0.25); border-bottom-color: rgba(0, 0, 0, 0.5); }
+
+/* Tatami weave, near invisible, ink surfaces only. */
+.weave {
+  background-color: var(--ink-true);
+  background-image:
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.028) 0 1px, transparent 1px 7px),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.016) 0 1px, transparent 1px 3px);
+}
+
+/* Two column ledger: label left, content right. */
+.ledger { display: grid; gap: var(--s-4) var(--s-7); }
+@media (min-width: 52em) { .ledger { grid-template-columns: minmax(12rem, 1fr) 3fr; align-items: start; } }
+.ledger > h2, .ledger > h3 { margin: 0; }
+
+/* Page header for interiors. */
+.page-head { padding-block: var(--s-8) var(--s-6); }
+.page-head h1 { display: grid; grid-template-columns: auto 1fr; gap: var(--s-4); align-items: start; }
+.page-head .lede { max-width: var(--measure); margin-top: var(--s-3); }
+
+/* Paper document layout with sticky index. */
+.doc { display: grid; gap: var(--s-7); padding-block: var(--s-6) var(--s-9); }
+@media (min-width: 64em) { .doc { grid-template-columns: 14rem minmax(0, 1fr); } .doc-index { position: sticky; top: var(--s-6); align-self: start; } }
+.doc-body > section + section { margin-top: var(--s-8); padding-top: var(--s-8); border-top: 1px solid var(--rule-pap); }
