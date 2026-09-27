@@ -22,7 +22,7 @@ if (masthead && toggle && nav) {
 
 // aria-current on the matching nav link, so the same partial serves every page.
 const here = location.pathname.replace(/\/+$/, "") || "/";
-for (const a of document.querySelectorAll(".nav a, .utility a")) {
+for (const a of document.querySelectorAll(".nav a, .masthead-link")) {
   const href = a.getAttribute("href").replace(/\/+$/, "") || "/";
   if (href !== "/" && here.startsWith(href)) a.setAttribute("aria-current", "page");
 }

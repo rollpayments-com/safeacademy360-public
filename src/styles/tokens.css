@@ -1,40 +1,49 @@
-/* Safe Academy 360 design tokens. The emblem is white and red on black; everything follows from it. */
+/* Safe Academy 360 design tokens. White canvas, near black ink, one red: the check. */
 :root {
   /* surfaces */
-  --ink: #0A0A0B;         /* page base, masthead, footer */
-  --ink-true: #000000;    /* the field the emblem sits on */
-  --ink-raise: #141417;   /* tables, elevated surfaces, placard backs */
-  --rule-ink: rgba(255, 255, 255, 0.10);
-  --paper: #F2F3F5;       /* document pages only, cool not cream */
-  --paper-raise: #FFFFFF;
-  --rule-pap: #D7DAE0;
+  --bg: #FFFFFF;
+  --bg-alt: #F6F6F8;        /* alternating sections, panels, table heads */
+  --bg-muted: #ECECF1;      /* pressed states, neutral pills */
+  --ink: #0A0A0B;           /* headings, primary action, the placard, the CTA panel */
+  --ink-hover: #26262C;
+  --border: #E4E4E9;
+  --border-strong: #CBCBD3;
+  --border-ink: rgba(255, 255, 255, 0.10);
+
+  /* text */
+  --text: #18181B;
+  --text-2: #52525B;
+  --text-3: #6B6B75;       /* 4.9:1 on white, AA for small text */
+  --text-on-ink: #F4F4F5;
+  --text-on-ink-2: rgba(255, 255, 255, 0.64);
 
   /* meaning */
-  --brand: #DC2626;       /* the check, primary action, active states. Matches the product app. */
-  --brand-deep: #B91C1C;  /* hover and pressed */
-  --verified: #0E7C55;    /* verify current state only, never decorative */
-
-  /* text on ink */
-  --text: #E8E8EA;
-  --text-2: #A1A1A6;
-  /* text on paper */
-  --text-ink: #141417;
-  --text-ink-2: #4A4A52;
+  --brand: #DC2626;         /* the check, form errors. Matches the product app. */
+  --brand-deep: #B91C1C;
+  --verified: #0E7C55;      /* verify current state and the directory status column only */
+  --verified-soft: #E8F6EF;
+  --brand-soft: #FEF2F2;
+  --brand-tint: #FDE8E8;
+  --brand-glow: rgba(220, 38, 38, 0.22);
+  --ink-gradient: linear-gradient(165deg, #1E1E24 0%, #0A0A0B 55%);
+  --dots: radial-gradient(rgba(10, 10, 11, 0.09) 1px, transparent 1.2px);
 
   /* type */
-  --font-display: "Barlow Condensed", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
-  --font-body: "Source Serif 4", Georgia, "Times New Roman", serif;
-  --step--1: 0.9375rem;
-  --step-0: 1.0625rem;
-  --step-1: 1.25rem;
-  --step-2: 1.5rem;
-  --step-3: 1.875rem;
-  --step-4: 2.375rem;
-  --step-5: 3rem;
-  --step-6: clamp(2.75rem, 6vw, 4.5rem);
-  --leading-body: 1.6;
-  --leading-tight: 1.05;
-  --measure: 68ch;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-display: "Inter Tight", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-md: 0.875rem;
+  --text-body: 0.9375rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --h1: clamp(2.5rem, 1.6rem + 2.6vw, 3.875rem);
+  --h1-int: clamp(2rem, 1.5rem + 1.4vw, 2.75rem);
+  --h2: clamp(1.5rem, 1.2rem + 0.9vw, 2rem);
+  --leading: 1.6;
+  --measure: 66ch;
 
   /* space */
   --s-1: 0.25rem;
@@ -43,13 +52,22 @@
   --s-4: 1rem;
   --s-5: 1.5rem;
   --s-6: 2rem;
-  --s-7: 3rem;
-  --s-8: 4rem;
-  --s-9: 6rem;
+  --s-7: 2.5rem;
+  --s-8: 3rem;
+  --s-9: 4rem;
+  --s-10: 5rem;
+  --s-11: 6rem;
+  --s-12: 8rem;
 
   /* shape */
-  --radius: 2px;
-  --wrap: 74rem;
-  --gutter: clamp(16px, 4vw, 40px);
-  --tape: 6px;
+  --radius-sm: 6px;
+  --radius: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --wrap: 75rem;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --shadow-sm: 0 1px 2px rgba(10, 10, 11, 0.04), 0 1px 3px rgba(10, 10, 11, 0.05);
+  --shadow: 0 1px 2px rgba(10, 10, 11, 0.05), 0 12px 32px -12px rgba(10, 10, 11, 0.14);
+  --ring: 0 0 0 3px rgba(24, 24, 27, 0.12);
 }

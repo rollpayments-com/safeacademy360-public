@@ -19,6 +19,7 @@ These rules govern every word on the site. They are extracted from the site's br
 - **Never present an empty result as proof.** Wherever the site describes what the academy sees, it says that an absence of matches is not a guarantee, in body copy, in the same type size as the claim it qualifies.
 - **Never say "we run a background check" if the product in use is registry only.** Name what is actually searched.
 - **Every screening claim must be traceable to what the vendor actually does.** Anything untraceable goes in the owner's open items list as a legal review item, not on the page.
+- **What the screen is, as of 27 September 2026.** A screen searches the public sex offender registries of all 58 US jurisdictions and state prison system records, by legal name and date of birth, through Offendersearch. County court and federal records are not searched; say so wherever the sources are named. It runs the moment a coach is added or a registration lands, and everyone screened is screened again each month. A returned record goes to Safe Academy 360 reviewers, who decide only whether the record and the person are the same person; the academy decides what happens next. Nothing about any individual is published. Describe the screen with those facts and no others.
 
 ## Positioning
 

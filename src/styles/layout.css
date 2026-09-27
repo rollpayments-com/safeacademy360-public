@@ -1,42 +1,51 @@
 .wrap { width: min(100% - 2 * var(--gutter), var(--wrap)); margin-inline: auto; }
-.wrap-narrow { width: min(100% - 2 * var(--gutter), 52rem); margin-inline: auto; }
-.section { padding-block: var(--s-8); }
-@media (min-width: 60em) { .section { padding-block: var(--s-9); } }
-.section-tight { padding-block: var(--s-7); }
+.wrap-narrow { width: min(100% - 2 * var(--gutter), 46rem); margin-inline: auto; }
+.section { padding-block: var(--s-10); }
+@media (min-width: 60em) { .section { padding-block: var(--s-11); } }
+.section-tight { padding-block: var(--s-8) var(--s-10); }
+.section-alt { position: relative; background-color: var(--bg-alt); background-image: var(--dots); background-size: 22px 22px; border-block: 1px solid var(--border); }
+.section-alt::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, var(--bg-alt) 0%, rgba(246, 246, 248, 0) 30%, rgba(246, 246, 248, 0) 70%, var(--bg-alt) 100%); pointer-events: none; }
+.section-alt > .wrap { position: relative; }
+.section-head { max-width: 42rem; margin-bottom: var(--s-8); }
+.section-head h2 { margin-bottom: var(--s-4); }
+.section-head p { color: var(--text-2); }
 
-/* The two rules between sections: a hairline, and the mat edge tape. */
-.hairline { border: 0; border-top: 1px solid var(--rule-ink); margin: 0; }
-.paper .hairline { border-color: var(--rule-pap); }
-.tape {
-  height: var(--tape);
-  margin: 0;
-  border: 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.14);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.6);
-  background-color: var(--ink-raise);
-  background-image: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 4px);
-}
-.paper .tape { border-top-color: rgba(0, 0, 0, 0.25); border-bottom-color: rgba(0, 0, 0, 0.5); }
-
-/* Tatami weave, near invisible, ink surfaces only. */
-.weave {
-  background-color: var(--ink-true);
-  background-image:
-    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.028) 0 1px, transparent 1px 7px),
-    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.016) 0 1px, transparent 1px 3px);
-}
+/* Rules between blocks. */
+.hairline, .tape { border: 0; border-top: 1px solid var(--border); margin: 0; }
 
 /* Two column ledger: label left, content right. */
-.ledger { display: grid; gap: var(--s-4) var(--s-7); }
-@media (min-width: 52em) { .ledger { grid-template-columns: minmax(12rem, 1fr) 3fr; align-items: start; } }
-.ledger > h2, .ledger > h3 { margin: 0; }
+.ledger { display: grid; gap: var(--s-4) var(--s-10); }
+@media (min-width: 52em) { .ledger { grid-template-columns: minmax(12rem, 18rem) minmax(0, 1fr); align-items: start; } }
+.ledger > h2 { margin: 0; font-size: var(--text-xl); }
+.ledger p { color: var(--text-2); font-size: var(--text-body); }
 
-/* Page header for interiors. */
-.page-head { padding-block: var(--s-8) var(--s-6); }
-.page-head h1 { display: grid; grid-template-columns: auto 1fr; gap: var(--s-4); align-items: start; }
-.page-head .lede { max-width: var(--measure); margin-top: var(--s-3); }
+/* Interior pages: everything below the masthead sits on a textured field; content lives in white cards. */
+main:has(> .page-head) { position: relative; isolation: isolate; overflow: clip; background-color: var(--bg-alt); background-image: var(--dots); background-size: 22px 22px; }
 
-/* Paper document layout with sticky index. */
-.doc { display: grid; gap: var(--s-7); padding-block: var(--s-6) var(--s-9); }
-@media (min-width: 64em) { .doc { grid-template-columns: 14rem minmax(0, 1fr); } .doc-index { position: sticky; top: var(--s-6); align-self: start; } }
-.doc-body > section + section { margin-top: var(--s-8); padding-top: var(--s-8); border-top: 1px solid var(--rule-pap); }
+/* Page header for interiors: a full bleed band with the brand diamond motif. */
+.page-head { position: relative; padding-block: var(--s-9) var(--s-8); }
+.page-head::before { content: ""; position: absolute; z-index: -1; top: 0; bottom: 0; left: 50%; width: 100vw; transform: translateX(-50%); background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0.55) 70%, rgba(255, 255, 255, 0) 100%); border-bottom: 1px solid var(--border); }
+.page-head::after { content: ""; position: absolute; z-index: -1; right: -2rem; top: -5rem; width: 18rem; height: 18rem; border: 1.5px solid rgba(220, 38, 38, 0.16); border-radius: 2rem; transform: rotate(45deg); background: radial-gradient(closest-side, rgba(220, 38, 38, 0.06), transparent); pointer-events: none; }
+@media (max-width: 60em) { .page-head::after { width: 12rem; height: 12rem; right: -4rem; top: -3rem; } }
+.page-head h1::before { content: ""; display: block; width: 2.5rem; height: 3px; border-radius: 2px; background: linear-gradient(90deg, var(--brand), var(--brand-deep)); margin-bottom: var(--s-5); }
+.page-head h1 { max-width: 24ch; margin-bottom: var(--s-4); }
+.page-head .lede { max-width: 58ch; }
+.page-head .lede a { text-decoration-color: var(--border-strong); }
+
+/* Document layout with sticky index. */
+.doc { display: grid; gap: var(--s-8); padding-block: var(--s-8) var(--s-11); align-items: start; }
+@media (min-width: 64em) {
+  .doc { grid-template-columns: 15rem minmax(0, 1fr); gap: var(--s-11); }
+  .doc-index { position: sticky; top: 5.5rem; align-self: start; max-height: calc(100vh - 6.5rem); overflow: auto; }
+}
+.doc-body { min-width: 0; }
+.doc-body > section + section { margin-top: var(--s-10); padding-top: var(--s-10); border-top: 1px solid var(--border); }
+.doc .doc-index { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-xl); padding: var(--s-5) var(--s-5) var(--s-5) var(--s-4); box-shadow: var(--shadow-sm); }
+.doc .doc-body > section { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-2xl); padding: var(--s-7); box-shadow: var(--shadow-sm); }
+@media (min-width: 52em) { .doc .doc-body > section { padding: var(--s-8) var(--s-9); } }
+.doc .doc-body > section + section { margin-top: var(--s-6); padding-top: var(--s-7); border-top: 1px solid var(--border); }
+@media (min-width: 52em) { .doc .doc-body > section + section { padding-top: var(--s-8); } }
+.wrap-narrow.doc-body { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-2xl); padding: var(--s-7); margin-block: var(--s-8) var(--s-11); box-shadow: var(--shadow-sm); }
+@media (min-width: 52em) { .wrap-narrow.doc-body { padding: var(--s-9); } }
+.section-tight .ledger { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-2xl); padding: var(--s-7); box-shadow: var(--shadow-sm); }
+.notfound { position: relative; }

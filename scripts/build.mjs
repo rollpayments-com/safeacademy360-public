@@ -258,6 +258,17 @@ async function build() {
         itemListElement: academies.map((a, i) => ({ "@type": "ListItem", position: i + 1, item: { "@type": "SportsActivityLocation", name: a.name, address: { "@type": "PostalAddress", addressLocality: a.city, addressRegion: a.state, addressCountry: "US" }, ...(a.website ? { url: a.website } : {}) } })),
       })}</script>`;
     }
+    // BlogPosting schema for blog posts (front matter: type: post, date: YYYY-MM-DD).
+    if (meta.type === "post") {
+      ctx.jsonld = (ctx.jsonld || "") + `<script type="application/ld+json">${JSON.stringify({
+        "@context": "https://schema.org", "@type": "BlogPosting",
+        headline: (meta.title || "").split("|")[0].trim(), description: meta.description,
+        ...(ctx.ogImage ? { image: ctx.ogImage } : {}),
+        datePublished: meta.date, dateModified: meta.updated || lastMod(path.join("src", "pages", f)) || meta.date, url: SITE.url + route,
+        author: { "@type": "Organization", name: SITE.operator }, publisher: { "@type": "Organization", name: SITE.operator },
+        mainEntityOfPage: SITE.url + route,
+      })}</script>`;
+    }
     // BreadcrumbList on every interior page, from the front matter crumb or the h1 fallback.
     if (route !== "/" && !meta.noindex) {
       const crumb = meta.crumb || (meta.title || "").split("|")[0].trim();
@@ -277,6 +288,78 @@ async function build() {
     pages.push({ file: f, route, meta, html, bytes: Buffer.byteLength(html), lastmod: lastMod(path.join("src", "pages", f)) });
   }
 
+  // blog index: auto lists every page with front matter type: post, newest first.
+  const fmtDate = (iso) => {
+    const d = new Date(`${iso}T00:00:00Z`);
+    return Number.isNaN(d.getTime()) ? iso : d.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" });
+  };
+  const posts = pages
+    .filter((p) => p.meta.type === "post" && !p.meta.noindex && !p.meta.draft)
+    .sort((a, b) => (b.meta.date || "").localeCompare(a.meta.date || ""));
+  {
+    const blogTitle = "Blog: safety guides for academies and parents | Safe Academy 360";
+    const blogDescription = "Guides on registry searches, coach screening, and what to ask a martial arts academy about safety.";
+    const route = "/blog/";
+    const cards = posts.length
+      ? posts.map((p) => `    <li class="resource">
+      <h2><a href="${p.route}">${escapeHtml((p.meta.title || "").split("|")[0].trim())}</a></h2>
+      <p class="resource-status">${escapeHtml(fmtDate(p.meta.date || p.lastmod))}</p>
+      <p>${escapeHtml(p.meta.description || "")}</p>
+    </li>`).join("\n")
+      : `    <li class="resource"><p>Nothing published yet. Check back soon.</p></li>`;
+    const body = `<div class="wrap page-head">
+  <h1>Blog</h1>
+  <p class="lede">Guides on registry searches, coach screening, and what to ask a martial arts academy about safety.</p>
+</div>
+<div class="wrap section-tight">
+  <ul class="resources" aria-label="Blog posts">
+${cards}
+  </ul>
+</div>`;
+    const meta = { title: blogTitle, description: blogDescription, crumb: "Blog", layout: "ink" };
+    const ctx = {
+      ...SITE, ...meta, route, canonical: SITE.url + route, layout: meta.layout,
+      ogImage: `${SITE.url}/assets/img/og/${existsSync(path.join(SRC, "assets", "img", "og", "blog.png")) ? "blog" : "index"}.png`, criticalCss: "", content: body, isHome: false,
+    };
+    const probe = render(partials.shell, ctx, partials);
+    const inUse = new Set([...htmlClasses(probe), ...(await jsClassesFor(meta))]);
+    for (const c of [...inUse]) { const i = c.indexOf("-"); if (i > 0) inUse.add(c.slice(0, i) + "-*"); }
+    ctx.criticalCss = pruneCss(allCss, inUse);
+    ctx.jsonld = `<script type="application/ld+json">${JSON.stringify({
+      "@context": "https://schema.org", "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE.url + "/" },
+        { "@type": "ListItem", position: 2, name: "Blog", item: SITE.url + route },
+      ],
+    })}</script>`;
+    let html = render(partials.shell, ctx, partials);
+    html = collapseBlankLines(stripComments(html));
+    await fs.mkdir(path.join(DIST, "blog"), { recursive: true });
+    await fs.writeFile(path.join(DIST, "blog", "index.html"), html);
+    const lastmod = posts.length ? posts.map((p) => p.lastmod).sort().pop() : new Date().toISOString().slice(0, 10);
+    pages.push({ file: "blog.html", route, meta, html, bytes: Buffer.byteLength(html), lastmod });
+  }
+
+  // rss.xml: same post list, for feed readers and freshness signals.
+  {
+    const rssItems = posts.map((p) => `    <item>
+      <title>${escapeHtml((p.meta.title || "").split("|")[0].trim())}</title>
+      <link>${SITE.url}${p.route}</link>
+      <guid>${SITE.url}${p.route}</guid>
+      <pubDate>${new Date(`${p.meta.date || p.lastmod}T00:00:00Z`).toUTCString()}</pubDate>
+      <description>${escapeHtml(p.meta.description || "")}</description>
+    </item>`).join("\n");
+    const rss = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"><channel>
+  <title>Safe Academy 360 blog</title>
+  <link>${SITE.url}/blog/</link>
+  <description>Guides on registry searches, coach screening, and what to ask a martial arts academy about safety.</description>
+${rssItems}
+</channel></rss>
+`;
+    await fs.writeFile(path.join(DIST, "rss.xml"), rss);
+  }
+
   // sitemap + robots
   const indexable = pages.filter((p) => !p.meta.noindex && !p.meta.draft);
   const sitemap =
@@ -284,10 +367,9 @@ async function build() {
     indexable.map((p) => `  <url><loc>${SITE.url}${p.route}</loc><lastmod>${p.lastmod}</lastmod></url>`).join("\n") +
     `\n</urlset>\n`;
   await fs.writeFile(path.join(DIST, "sitemap.xml"), sitemap);
-  await fs.writeFile(
-    path.join(DIST, "robots.txt"),
-    `User-agent: *\nAllow: /\n${pages.filter((p) => p.meta.noindex).map((p) => `Disallow: ${p.route}`).join("\n")}\n\nSitemap: ${SITE.url}/sitemap.xml\n`,
-  );
+  // No Disallow lines. A disallowed page cannot be crawled, so its noindex tag is never read and the bare
+  // URL can still be indexed from internal links. noindex pages are simply left out of the sitemap.
+  await fs.writeFile(path.join(DIST, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${SITE.url}/sitemap.xml\n`);
 
   // internal link check
   const distFile = async (p) => {

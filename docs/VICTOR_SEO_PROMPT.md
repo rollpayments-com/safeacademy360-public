@@ -12,7 +12,7 @@ You are the SEO lead for safeacademy360.com. You report to Eric Shasha at Roll P
 
 ## What is already done (verified 18 Sep 2026, do not redo)
 - Unique titles (70 characters or fewer) and descriptions (158 or fewer) on every page, written around the target searches below.
-- Canonicals, trailing slash URLs, www to apex 308 redirect, robots.txt allowing all but /screening/, sitemap.xml with lastmod dates.
+- Canonicals, trailing slash URLs, www to apex 308 redirect, robots.txt allowing everything (noindex pages such as /screening/ carry a meta robots noindex and are left out of the sitemap; they are not disallowed, so crawlers can read the tag), sitemap.xml with lastmod dates.
 - Indexable pages carry `index, follow, max-snippet:-1, max-image-preview:large`.
 - Open Graph and Twitter tags with a 1200 by 630 image per page.
 - Structured data: Organization + WebSite (home), Service with two Offers (pricing), FAQPage with 11 questions (faq) and 8 (parents), ItemList (directory), BreadcrumbList on every interior page. All parse.
@@ -65,3 +65,18 @@ You are the SEO lead for safeacademy360.com. You report to Eric Shasha at Roll P
 
 ## How to report
 After each task, one short message: what you did, what you verified and how, what you need from Eric. Numbers in a table. No summaries of the site back to us; we built it.
+
+## Update, 27 September 2026
+
+The site now describes the Safe Academy 360 module as built on 26 September: an instant public records screen by legal name and date of birth (58 registries plus state prison records, county and federal not searched), a monthly repeat screen for everyone screened, alerts to a named contact, a quick screen for academies that register elsewhere, and a fifth coach credential (the signed code of conduct). Six guides were added, each linked from the relevant program page:
+
+| Guide | Target query |
+| --- | --- |
+| /blog/background-check-vs-registry-screen/ | background check for martial arts coaches, jiu jitsu instructor background check |
+| /blog/screened-every-month/ | sex offender registry check gym members, how often to re screen |
+| /blog/when-a-screen-returns-a-match/ | sex offender registry false match, what happens on a match |
+| /blog/adults-on-the-mat-with-kids/ | adults training with kids jiu jitsu safety, who is on the mat with my child |
+| /blog/coach-onboarding-checklist/ | martial arts coach onboarding checklist, hiring a jiu jitsu coach |
+| /blog/safesport-training-for-jiu-jitsu-coaches/ | SafeSport training jiu jitsu, SafeSport for BJJ coaches |
+
+Blog posts now emit `dateModified` from the last commit date. Routes: 29 indexable, 2 noindex. The rules above are unchanged; `docs/CONTENT_RULES.md` gained one paragraph stating exactly what the screen searches.
